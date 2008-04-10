@@ -1,8 +1,8 @@
-h1. Hacker News
+# Hacker News
 
-This is a scraper for http://news.ycombinator.com.  It shows just how little Ruby is required to run a powerful web filter.
+This tiny script is a scraper for http://news.ycombinator.com.  It shows just how little Ruby is required to run a powerful web filter.
 
-What it does:
+## What it be doin':
 
   * Fetches the YCombinator news page
   * HPricot's it into pieces
