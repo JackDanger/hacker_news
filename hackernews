@@ -23,7 +23,8 @@ news = lambda do |env|
       comments_number   = (link.parent.parent.next_sibling / 'td a').last.inner_text.split.first
       item.title        = link.inner_text
       item.link         = link.attributes['href'] =~ /^http/ ? link.attributes['href'] : "http://news.ycombinator.com/#{link.attributes['href']}"
-      article_cache     = 'hackernews_' + URI.parse(item.link).host + URI.parse(item.link).path.split('/').join('__')
+      article_cache     = 'hackernews_' + item.link.gsub(/:|\/|=|&|\[|\]/, '_')
+      puts article_cache
       if File.exist?(article_cache)
         article = File.read(article_cache)
       else
