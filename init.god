@@ -3,7 +3,9 @@ God.watch do |w|
   dir = File.expand_path(File.dirname(__FILE__))
   w.name = "hackernews"
   w.interval = 30.seconds
-  w.start = "ruby #{dir}/hackernews 2>&1 > #{dir}/log/god.log"
+  w.uid = 'www'
+  w.gid = 'www'
+  w.start = "#{dir}/hackernews"
   w.start_if do |start|
     start.condition(:process_running) do |c|
       c.interval = 5.seconds
