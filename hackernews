@@ -24,7 +24,7 @@ class HackerNews
         comments_number   = (link.parent.parent.next_sibling / 'td a').last.inner_text.split.first
         item.title        = link.inner_text
         item.link         = link.attributes['href'] =~ /^http/ ? link.attributes['href'] : "http://news.ycombinator.com/#{link.attributes['href']}"
-        article_cache     = 'cache/' + item.link.gsub(/:|\/|=|&|\[|\]|\?/, '_')
+        article_cache     = File.join(File.dirname(__FILE__), 'cache', item.link.gsub(/:|\/|=|&|\[|\]|\?/, '_'))
         if File.exist?(article_cache)
           article = File.read(article_cache)
         else
